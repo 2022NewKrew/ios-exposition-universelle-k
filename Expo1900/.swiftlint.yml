@@ -266,10 +266,10 @@ opt_in_rules: #사용하는 룰
     - file_length # New
     
     # file이름이 파일안의 extension이나 타입과 일치해야합니다. https://realm.github.io/SwiftLint/file_name.html
-    - file_name # new
+    # - file_name # new
     
     # file이름엔 공백이 있으면 안됩니다. https://realm.github.io/SwiftLint/file_name_no_space.html
-    - file_name_no_space # new
+    # - file_name_no_space # new
     
     # file내부의 정렬순서를 강제합니다. protocol class 순 https://realm.github.io/SwiftLint/file_types_order.html
     - file_types_order # new
