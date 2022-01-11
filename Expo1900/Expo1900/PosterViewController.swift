@@ -8,15 +8,16 @@
 import UIKit
 
 class PosterViewController: UIViewController {
+    // MARK: - Views
     lazy var titleLabel: UILabel = makeLabel(with: .title1)
     
     lazy var posterImageView: UIImageView = makeImageView(imageName: "poster")
     
-    lazy var visitorStaticLabel: UILabel = makeLabel(with: .title3, text: "방문객")
-    lazy var locationStaticLabel: UILabel = makeLabel(with: .title3, text: "개최지")
-    lazy var durationStaticLabel: UILabel = makeLabel(with: .title3, text: "개최 기간")
+    lazy var visitorStaticLabel: UILabel = makeLabel(with: .title3, text: "방문객", textAlignment: .right)
+    lazy var locationStaticLabel: UILabel = makeLabel(with: .title3, text: "개최지", textAlignment: .right)
+    lazy var durationStaticLabel: UILabel = makeLabel(with: .title3, text: "개최 기간", textAlignment: .right)
     
-    lazy var visitorLabel: UILabel = makeLabel(with: .body)
+    lazy var visitorLabel: UILabel = makeLabel(with: .body, textAlignment: .left)
     lazy var locationLabel: UILabel = makeLabel(with: .body)
     lazy var durationLabel: UILabel = makeLabel(with: .body)
     
@@ -24,7 +25,7 @@ class PosterViewController: UIViewController {
     lazy var locationStackView: UIStackView = makeHorizontalStackView(with: locationStaticLabel, locationLabel, spacing: 5)
     lazy var durationStackView: UIStackView = makeHorizontalStackView(with: durationStaticLabel, durationLabel, spacing: 5)
     
-    lazy var descriptionLabel: UILabel = makeLabel(with: .body)
+    lazy var descriptionLabel: UILabel = makeLabel(with: .body, textAlignment: .left)
 
     lazy var leftFlagImageView: UIImageView = makeImageView(imageName: "flag")
     lazy var rightFlagImageView: UIImageView = makeImageView(imageName: "flag")
@@ -54,23 +55,28 @@ class PosterViewController: UIViewController {
     lazy var scrollView: UIScrollView = {
         let scrollView: UIScrollView = UIScrollView()
         scrollView.addSubview(contentStackView)
+        scrollView.showsVerticalScrollIndicator = false
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         return scrollView
     }()
     
+    // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
         setupScrollView()
+        setupStaticLabel()
         bindExpositionModel()
     }
     
-    private func makeLabel(with style: UIFont.TextStyle, text: String = "") -> UILabel {
+    private func makeLabel(with style: UIFont.TextStyle, text: String = "", textAlignment: NSTextAlignment = .center) -> UILabel {
         let label: UILabel = UILabel()
         label.font = UIFont.preferredFont(forTextStyle: style)
         label.textColor = UIColor.black
         label.text = text
-        label.textAlignment = .center
+        label.adjustsFontForContentSizeCategory = true 
+        
+        label.textAlignment = textAlignment
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -93,14 +99,15 @@ class PosterViewController: UIViewController {
         return imageView
     }
     
+    // MARK: - Setup
     private func setupScrollView() {
         view.addSubview(scrollView)
         
-        NSLayoutConstraint.activate([scrollView.topAnchor.constraint(equalTo: view.topAnchor),
+        NSLayoutConstraint.activate([scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
                                      scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-                                     scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-                                     scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-                                     scrollView.widthAnchor.constraint(equalTo: view.widthAnchor),
+                                     scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 12),
+                                     scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -12),
+                                     contentStackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
                                      contentStackView.topAnchor.constraint(equalTo: scrollView.topAnchor),
                                      contentStackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
                                      contentStackView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
@@ -112,11 +119,17 @@ class PosterViewController: UIViewController {
         let safeArea: UILayoutGuide = view.safeAreaLayoutGuide
         
         NSLayoutConstraint.activate([posterImageView.widthAnchor.constraint(equalTo: safeArea.widthAnchor, multiplier: 0.4),
-                                     posterImageView.heightAnchor.constraint(equalTo: safeArea.heightAnchor, multiplier: 0.6),
+                                     posterImageView.heightAnchor.constraint(equalTo: safeArea.widthAnchor, multiplier: 0.6),
                                      leftFlagImageView.heightAnchor.constraint(equalToConstant: 20),
                                      leftFlagImageView.widthAnchor.constraint(equalToConstant: 20),
                                      rightFlagImageView.heightAnchor.constraint(equalToConstant: 20),
                                      rightFlagImageView.widthAnchor.constraint(equalToConstant: 20)])
+    }
+
+    private func setupStaticLabel() {
+        visitorLabel.numberOfLines = 1
+        locationLabel.numberOfLines = 1
+        durationLabel.numberOfLines = 1
     }
     
     private func bindExpositionModel() {
