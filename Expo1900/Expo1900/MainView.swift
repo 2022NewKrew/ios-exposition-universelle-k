@@ -12,6 +12,7 @@ class MainView: UIView {
     var expositionImageView: UIImageView = {
         let imageView: UIImageView = UIImageView()
         imageView.image = UIImage(named: "poster")
+        imageView.contentMode = .scaleAspectFit
         return imageView
     }()
     
@@ -54,21 +55,4 @@ class MainView: UIView {
     }
 }
 
-extension UIView {
-    func setConstraint(view: UIView, layout: UILayoutGuide, left: CGFloat?, right: CGFloat?, top: CGFloat?, bottom: CGFloat?) {
-        view.translatesAutoresizingMaskIntoConstraints = false
-        if let left: CGFloat = left {
-            view.leadingAnchor.constraint(equalTo: layout.leadingAnchor, constant: left).isActive = true
-        }
-        if let right: CGFloat = right {
-            view.trailingAnchor.constraint(equalTo: layout.trailingAnchor, constant: -right).isActive = true
-        }
-        if let top: CGFloat = top {
-            view.topAnchor.constraint(equalTo: layout.topAnchor, constant: top).isActive = true
-        }
-        
-        if let bottom: CGFloat = bottom {
-            view.bottomAnchor.constraint(equalTo: layout.bottomAnchor, constant: -bottom).isActive = true
-        }
-    }
-}
+
