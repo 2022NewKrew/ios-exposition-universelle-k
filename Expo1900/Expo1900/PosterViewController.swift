@@ -35,6 +35,7 @@ class PosterViewController: UIViewController {
         button.setTitle("한국의 출품작 보러가기", for: .normal)
         button.setTitleColor(.systemBlue, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(showExpoListViewController), for: .touchUpInside)
         return button
     }()
     
@@ -63,10 +64,16 @@ class PosterViewController: UIViewController {
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "메인"
         view.backgroundColor = UIColor.white
         setupScrollView()
         setupStaticLabel()
         bindExpositionModel()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        hideNavigationBar()
     }
     
     private func makeLabel(with style: UIFont.TextStyle, text: String = "", textAlignment: NSTextAlignment = .center) -> UILabel {
@@ -147,5 +154,15 @@ class PosterViewController: UIViewController {
         locationLabel.text = ": \(model.location)"
         durationLabel.text = ": \(model.duration)"
         descriptionLabel.text = "\(model.description)"
+    }
+    
+    private func hideNavigationBar() {
+        navigationController?.isNavigationBarHidden = true
+    }
+    
+    @objc
+    func showExpoListViewController() {
+        let expoListVC: ExpoListViewController = ExpoListViewController()
+        navigationController?.pushViewController(expoListVC, animated: true)
     }
 }
