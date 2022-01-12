@@ -15,19 +15,22 @@ class PosterViewController: UIViewController {
     
     private let visitorStaticLabel: UILabel = UILabel.make(with: .title3,
                                                            text: "방문객",
-                                                           textAlignment: .right)
+                                                           textAlignment: .right,
+                                                           numberOfLines: 1)
     private let locationStaticLabel: UILabel = UILabel.make(with: .title3,
                                                             text: "개최지",
-                                                            textAlignment: .right)
+                                                            textAlignment: .right,
+                                                            numberOfLines: 1)
     private let durationStaticLabel: UILabel = UILabel.make(with: .title3,
                                                             text: "개최 기간",
-                                                            textAlignment: .right)
+                                                            textAlignment: .right,
+                                                            numberOfLines: 1)
     
     private let visitorLabel: UILabel = UILabel.make(with: .body,
                                                      textAlignment: .left,
-                                                     numberOfLines: 1)
-    private let locationLabel: UILabel = UILabel.make(with: .body, numberOfLines: 1)
-    private let durationLabel: UILabel = UILabel.make(with: .body, numberOfLines: 1)
+                                                     numberOfLines: 0)
+    private let locationLabel: UILabel = UILabel.make(with: .body, numberOfLines: 0)
+    private let durationLabel: UILabel = UILabel.make(with: .body, numberOfLines: 0)
     
     private lazy var visitorStackView: UIStackView = makeHorizontalStackView(with: visitorStaticLabel,
                                                                              visitorLabel,
