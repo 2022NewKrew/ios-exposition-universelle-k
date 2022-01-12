@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C237C669278E9DEC00DA36A5 /* EntryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C237C668278E9DEC00DA36A5 /* EntryTableViewCell.swift */; };
 		C270DF86278BE90500546E42 /* EntryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C270DF85278BE90500546E42 /* EntryData.swift */; };
 		C270DFB2278D49FD00546E42 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C270DFB1278D49FD00546E42 /* MainViewController.swift */; };
 		C270DFB4278D4A5000546E42 /* Decoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C270DFB3278D4A5000546E42 /* Decoder.swift */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C237C668278E9DEC00DA36A5 /* EntryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryTableViewCell.swift; sourceTree = "<group>"; };
 		C270DF85278BE90500546E42 /* EntryData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryData.swift; sourceTree = "<group>"; };
 		C270DFB1278D49FD00546E42 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		C270DFB3278D4A5000546E42 /* Decoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Decoder.swift; sourceTree = "<group>"; };
@@ -68,11 +70,12 @@
 			children = (
 				C79FF4B42589F401005FB0FD /* AppDelegate.swift */,
 				C79FF4B62589F401005FB0FD /* SceneDelegate.swift */,
+				C237C668278E9DEC00DA36A5 /* EntryTableViewCell.swift */,
 				C79FF4B82589F401005FB0FD /* EntryListViewController.swift */,
-				C270DFB3278D4A5000546E42 /* Decoder.swift */,
 				C270DFB1278D49FD00546E42 /* MainViewController.swift */,
-				C270DF85278BE90500546E42 /* EntryData.swift */,
 				C2DE30D3278D65D7007667AA /* MainView.swift */,
+				C270DFB3278D4A5000546E42 /* Decoder.swift */,
+				C270DF85278BE90500546E42 /* EntryData.swift */,
 				C295224D278C17CC002DBF6B /* ExpositionData.swift */,
 				C79FF4BA2589F401005FB0FD /* Main.storyboard */,
 				C79FF4BD2589F404005FB0FD /* Assets.xcassets */,
@@ -158,6 +161,7 @@
 				C270DF86278BE90500546E42 /* EntryData.swift in Sources */,
 				C270DFB2278D49FD00546E42 /* MainViewController.swift in Sources */,
 				C270DFB4278D4A5000546E42 /* Decoder.swift in Sources */,
+				C237C669278E9DEC00DA36A5 /* EntryTableViewCell.swift in Sources */,
 				C79FF4B72589F401005FB0FD /* SceneDelegate.swift in Sources */,
 				C295224E278C17CC002DBF6B /* ExpositionData.swift in Sources */,
 			);

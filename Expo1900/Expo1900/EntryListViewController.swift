@@ -33,10 +33,8 @@ extension EntryListViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
-        let entry = entryItems[indexPath.row]
-        cell.textLabel?.text = entry.name
-        cell.imageView?.image = UIImage(named: entry.image)
+        let cell = EntryTableViewCell()
+        cell.makeEntryCell(data: entryItems[indexPath.row])
         return cell
     }
 }
