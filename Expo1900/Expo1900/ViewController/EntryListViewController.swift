@@ -2,8 +2,8 @@ import UIKit
 
 class EntryListViewController: UIViewController {
     var tableView: UITableView = UITableView()
-    
     var entryItems: [EntryData] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -11,10 +11,11 @@ class EntryListViewController: UIViewController {
         navigationController?.setNavigationBarHidden(false, animated: false)
         view.addSubview(tableView)
         arrangeConstraint(view: tableView, guide: view.layoutMarginsGuide)
-        
         tableView.delegate = self
         tableView.dataSource = self
-        entryItems = Decoder.decodeEntry(type: [EntryData].self, from: "items") ?? entryItems
+        if let decodeResult = Decoder.decodeEntry(type: [EntryData].self, from: "items") {
+            entryItems = decodeResult
+        }
     }
 }
 
