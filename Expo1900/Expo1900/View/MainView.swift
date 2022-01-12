@@ -31,6 +31,15 @@ class MainView: UIStackView {
         return label
     }()
     
+    private lazy var koreanButtonView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [makeFlag(), koreanEntries, makeFlag()])
+        stackView.axis = .horizontal
+        stackView.distribution = .equalCentering
+        stackView.spacing = 20
+        stackView.alignment = .center
+        return stackView
+    }()
+    
     private var koreanEntries: UIButton = {
         let button = UIButton()
         button.setTitle("한국의 출품작 보러가기", for: .normal)
@@ -66,11 +75,21 @@ class MainView: UIStackView {
         self.addArrangedSubview(expositionImageView)
         self.addArrangedSubview(expositionInfomation)
         self.addArrangedSubview(expositionDescription)
-        self.addArrangedSubview(koreanEntries)
+        self.addArrangedSubview(koreanButtonView)
         self.alignment = .center
         self.axis = .vertical
         self.distribution = .fill
         self.spacing = 10
         self.translatesAutoresizingMaskIntoConstraints = false
+    }
+    
+    private func makeFlag() -> UIImageView {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "flag")
+        imageView.contentMode = .scaleAspectFit
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.widthAnchor.constraint(equalToConstant: 50).isActive = true
+        imageView.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        return imageView
     }
 }

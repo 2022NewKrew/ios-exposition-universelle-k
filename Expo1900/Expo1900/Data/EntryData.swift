@@ -1,6 +1,6 @@
 import Foundation
 
-struct EntryData: Codable{
+struct EntryData: Decodable{
     let name: String
     let image: String
     let shortDescription: String

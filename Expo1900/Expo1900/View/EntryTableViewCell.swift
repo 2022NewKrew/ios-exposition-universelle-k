@@ -1,13 +1,8 @@
-//
-//  EntryTableViewCell.swift
-//  Expo1900
-//
-//  Created by kakao on 2022/01/12.
-//
-
 import UIKit
 
 class EntryTableViewCell: UITableViewCell {
+    
+    static let identifier = "EntryTableViewCell"
     
     private let entryImage: UIImageView = {
         let imageView: UIImageView = UIImageView()
@@ -68,16 +63,6 @@ class EntryTableViewCell: UITableViewCell {
         entryImage.image = UIImage(named: data.image)
         entryName.text = data.name
         entryShortDescription.text = data.shortDescription
-    }
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {

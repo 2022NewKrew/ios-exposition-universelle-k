@@ -10,12 +10,7 @@ class EntryListViewController: UIViewController {
         navigationItem.title = "한국의 출품작"
         navigationController?.setNavigationBarHidden(false, animated: false)
         view.addSubview(tableView)
-        
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor).isActive = true
-        tableView.bottomAnchor.constraint(equalTo: view.layoutMarginsGuide.bottomAnchor).isActive = true
-        tableView.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor).isActive = true
-        tableView.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor).isActive = true
+        arrangeConstraint(view: tableView, guide: view.layoutMarginsGuide)
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -36,5 +31,11 @@ extension EntryListViewController: UITableViewDataSource {
         let cell = EntryTableViewCell()
         cell.makeEntryCell(data: entryItems[indexPath.row])
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let thirdView = EntryDetailViewController()
+        self.navigationController?.pushViewController(thirdView, animated: true)
+        thirdView.pass(data: entryItems[indexPath.row])
     }
 }
