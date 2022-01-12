@@ -8,6 +8,7 @@
 import UIKit
 
 class ExpoListViewController: UIViewController {
+    // MARK: - Views
     private let expoTableView: UITableView = {
         let tableView: UITableView = UITableView()
         tableView.register(ExpoTableViewCell.self, forCellReuseIdentifier: ExpoTableViewCell.identifier)
@@ -31,10 +32,7 @@ class ExpoListViewController: UIViewController {
         showNavigationBar()
     }
     
-    private func showNavigationBar() {
-        navigationController?.isNavigationBarHidden = false
-    }
-    
+    // MARK: - Setup
     private func setupExpoTableView() {
         view.addSubview(expoTableView)
         
@@ -44,6 +42,7 @@ class ExpoListViewController: UIViewController {
                                      expoTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor)])
         
         expoTableView.dataSource = self
+        expoTableView.delegate = self
     }
     
     private func bindExpoItems() {
@@ -55,8 +54,13 @@ class ExpoListViewController: UIViewController {
         expoItems = model
         expoTableView.reloadData()
     }
+    
+    private func showNavigationBar() {
+        navigationController?.isNavigationBarHidden = false
+    }
 }
 
+// MARK: - Table View DataSource
 extension ExpoListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         expoItems.count
@@ -69,5 +73,13 @@ extension ExpoListViewController: UITableViewDataSource {
         let expoItem: ExpoItem = expoItems[indexPath.row]
         cell.updateView(by: expoItem)
         return cell
+    }
+}
+
+// MARK: - Table View Delegate
+extension ExpoListViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let detailVC: ExpoDetailViewController = ExpoDetailViewController(expoItem: expoItems[indexPath.row])
+        navigationController?.pushViewController(detailVC, animated: true)
     }
 }

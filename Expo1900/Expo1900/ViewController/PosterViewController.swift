@@ -9,25 +9,25 @@ import UIKit
 
 class PosterViewController: UIViewController {
     // MARK: - Views
-    private lazy var titleLabel: UILabel = UILabel.make(with: .title1)
+    private let titleLabel: UILabel = UILabel.make(with: .title1)
     
-    private lazy var posterImageView: UIImageView = makeImageView(imageName: "poster")
+    private let posterImageView: UIImageView = UIImageView.make(imageName: "poster")
     
-    private lazy var visitorStaticLabel: UILabel = UILabel.make(with: .title3,
-                                                                text: "방문객",
-                                                                textAlignment: .right)
-    private lazy var locationStaticLabel: UILabel = UILabel.make(with: .title3,
-                                                                 text: "개최지",
-                                                                 textAlignment: .right)
-    private lazy var durationStaticLabel: UILabel = UILabel.make(with: .title3,
-                                                                 text: "개최 기간",
-                                                                 textAlignment: .right)
+    private let visitorStaticLabel: UILabel = UILabel.make(with: .title3,
+                                                           text: "방문객",
+                                                           textAlignment: .right)
+    private let locationStaticLabel: UILabel = UILabel.make(with: .title3,
+                                                            text: "개최지",
+                                                            textAlignment: .right)
+    private let durationStaticLabel: UILabel = UILabel.make(with: .title3,
+                                                            text: "개최 기간",
+                                                            textAlignment: .right)
     
-    private lazy var visitorLabel: UILabel = UILabel.make(with: .body,
-                                                          textAlignment: .left,
-                                                          numberOfLines: 1)
-    private lazy var locationLabel: UILabel = UILabel.make(with: .body, numberOfLines: 1)
-    private lazy var durationLabel: UILabel = UILabel.make(with: .body, numberOfLines: 1)
+    private let visitorLabel: UILabel = UILabel.make(with: .body,
+                                                     textAlignment: .left,
+                                                     numberOfLines: 1)
+    private let locationLabel: UILabel = UILabel.make(with: .body, numberOfLines: 1)
+    private let durationLabel: UILabel = UILabel.make(with: .body, numberOfLines: 1)
     
     private lazy var visitorStackView: UIStackView = makeHorizontalStackView(with: visitorStaticLabel,
                                                                              visitorLabel,
@@ -39,10 +39,10 @@ class PosterViewController: UIViewController {
                                                                               durationLabel,
                                                                               spacing: 5)
     
-    private lazy var descriptionLabel: UILabel = UILabel.make(with: .body, textAlignment: .left)
+    private let descriptionLabel: UILabel = UILabel.make(with: .body, textAlignment: .left)
     
-    private lazy var leftFlagImageView: UIImageView = makeImageView(imageName: "flag")
-    private lazy var rightFlagImageView: UIImageView = makeImageView(imageName: "flag")
+    private let leftFlagImageView: UIImageView = UIImageView.make(imageName: "flag")
+    private let rightFlagImageView: UIImageView = UIImageView.make(imageName: "flag")
     
     private lazy var showExpoButton: UIButton = {
         let button: UIButton = UIButton()
@@ -73,7 +73,6 @@ class PosterViewController: UIViewController {
     private lazy var scrollView: UIScrollView = {
         let scrollView: UIScrollView = UIScrollView()
         scrollView.addSubview(contentStackView)
-        scrollView.showsVerticalScrollIndicator = false
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         return scrollView
     }()
@@ -101,14 +100,6 @@ class PosterViewController: UIViewController {
         return stackView
     }
     
-    private func makeImageView(imageName: String) -> UIImageView {
-        let imageView: UIImageView = UIImageView()
-        imageView.image = UIImage(named: imageName)
-        imageView.contentMode = .scaleAspectFit
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        return imageView
-    }
-    
     // MARK: - Setup
     private func setupScrollView() {
         view.addSubview(scrollView)
@@ -116,13 +107,12 @@ class PosterViewController: UIViewController {
         NSLayoutConstraint.activate([
             scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 12),
-            scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -12),
-            contentStackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
+            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            contentStackView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
             contentStackView.topAnchor.constraint(equalTo: scrollView.topAnchor),
             contentStackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -25),
-            contentStackView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
-            contentStackView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor)
+            contentStackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor, constant: -24)
         ])
         setupImageViews()
     }

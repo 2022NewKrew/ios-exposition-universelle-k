@@ -8,8 +8,8 @@
 import UIKit
 
 class ExpoTableViewCell: UITableViewCell {
-    private lazy var titleLabel: UILabel = UILabel.make(with: .title1, textAlignment: .left)
-    private lazy var shortDescLabel: UILabel = UILabel.make(with: .body, textAlignment: .left)
+    private let titleLabel: UILabel = UILabel.make(with: .title1, textAlignment: .left)
+    private let shortDescLabel: UILabel = UILabel.make(with: .body, textAlignment: .left)
     
     private lazy var labelStackView: UIStackView = {
         let stackView: UIStackView = UIStackView(arrangedSubviews: [titleLabel, shortDescLabel])
@@ -20,12 +20,7 @@ class ExpoTableViewCell: UITableViewCell {
         return stackView
     }()
     
-    private let expoImageView: UIImageView = {
-        let imageView: UIImageView = UIImageView()
-        imageView.contentMode = .scaleAspectFit
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        return imageView
-    }()
+    private let expoImageView: UIImageView = UIImageView.make()
     
     private lazy var contentStackView: UIStackView = {
         let stackView: UIStackView = UIStackView(arrangedSubviews: [expoImageView, labelStackView])
