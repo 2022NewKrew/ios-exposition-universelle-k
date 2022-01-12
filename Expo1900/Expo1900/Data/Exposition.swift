@@ -13,4 +13,10 @@ struct Exposition: Codable {
     let location: String
     let duration: String
     let description: String
+    
+    var visitorsCount: String {
+        let numberFormatter: NumberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .decimal
+        return (numberFormatter.string(from: NSNumber(value: visitors)) ?? "0") + " 명"
+    }
 }

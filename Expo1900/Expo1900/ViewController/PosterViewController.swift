@@ -144,7 +144,7 @@ class PosterViewController: UIViewController {
         }
         
         titleLabel.text = model.title
-        visitorLabel.text = ": \(model.visitors)"
+        visitorLabel.text = ": \(model.visitorsCount)"
         locationLabel.text = ": \(model.location)"
         durationLabel.text = ": \(model.duration)"
         descriptionLabel.text = "\(model.description)"
