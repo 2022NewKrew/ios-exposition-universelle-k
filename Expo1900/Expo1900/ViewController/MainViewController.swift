@@ -1,8 +1,8 @@
 import UIKit
 
 class MainViewController: UIViewController {
-    let scrollView = UIScrollView()
-    let mainView = MainView()
+    private let scrollView = UIScrollView()
+    private let mainView = MainView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -11,7 +11,7 @@ class MainViewController: UIViewController {
         setUpUI()
     }
     
-    func setUpUI() {
+    private func setUpUI() {
         view.addSubview(scrollView)
         scrollView.addSubview(mainView)
         arrangeConstraint(view: scrollView, guide: view.safeAreaLayoutGuide)

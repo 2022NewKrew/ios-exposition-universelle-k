@@ -24,7 +24,7 @@ class EntryTableViewCell: UITableViewCell {
         return label
     }()
     
-    lazy var textStack: UIStackView = {
+    private lazy var textStack: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [entryName, entryShortDescription])
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
@@ -32,7 +32,7 @@ class EntryTableViewCell: UITableViewCell {
         return stackView
     }()
     
-    lazy var entryInfomationStack: UIStackView = {
+    private lazy var entryInfomationStack: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [entryImage, textStack])
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .horizontal
@@ -58,7 +58,7 @@ class EntryTableViewCell: UITableViewCell {
         entryShortDescription.text = data.shortDescription
     }
     
-    func setUpView() {
+    private func setUpView() {
         contentView.addSubview(entryInfomationStack)
         
         entryImage.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.2).isActive = true

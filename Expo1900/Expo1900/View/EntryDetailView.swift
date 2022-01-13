@@ -34,7 +34,7 @@ class EntryDetailView: UIStackView {
         self.translatesAutoresizingMaskIntoConstraints = false
     }
     
-    func setDetailView(data: EntryData) {
+    private func setDetailView(data: EntryData) {
         entryImage.image = UIImage(named: data.image)
         entryDescription.text = data.detailDescription
     }

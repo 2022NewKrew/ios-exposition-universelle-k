@@ -1,8 +1,8 @@
 import UIKit
 
-class EntryListViewController: UIViewController, UITableViewDelegate {
-    var tableView: UITableView = UITableView()
-    var entryItems: [EntryData] = []
+class EntryListViewController: UIViewController {
+    private var tableView: UITableView = UITableView()
+    private var entryItems: [EntryData] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +24,13 @@ class EntryListViewController: UIViewController, UITableViewDelegate {
     }
 }
 
+extension EntryListViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let entryDetailView = EntryDetailViewController(data: entryItems[indexPath.row])
+        self.navigationController?.pushViewController(entryDetailView, animated: true)
+    }
+}
+
 extension EntryListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return entryItems.count
@@ -34,10 +41,5 @@ extension EntryListViewController: UITableViewDataSource {
         cell.setEntryCell(data: entryItems[indexPath.row])
         cell.accessoryType = .disclosureIndicator
         return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let entryDetailView = EntryDetailViewController(data: entryItems[indexPath.row])
-        self.navigationController?.pushViewController(entryDetailView, animated: true)
     }
 }
