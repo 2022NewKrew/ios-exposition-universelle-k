@@ -18,7 +18,7 @@ class MainView: UIStackView {
     
     private let expositionVisitorTitle: UILabel = {
         let label: UILabel = UILabel()
-        label.text = "방문객: "
+        label.text = "방문객 :"
         label.textAlignment = .right
         label.font = UIFont.preferredFont(forTextStyle: .title3)
         return label
@@ -34,7 +34,7 @@ class MainView: UIStackView {
     
     private let expositionLocationTitle: UILabel = {
         let label: UILabel = UILabel()
-        label.text = "개최지: "
+        label.text = "개최지 :"
         label.textAlignment = .right
         label.font = UIFont.preferredFont(forTextStyle: .title3)
         return label
@@ -50,7 +50,7 @@ class MainView: UIStackView {
     
     private let expositionDurationTitle: UILabel = {
         let label: UILabel = UILabel()
-        label.text = "개최기간: "
+        label.text = "개최기간 :"
         label.textAlignment = .right
         label.font = UIFont.preferredFont(forTextStyle: .title3)
         return label

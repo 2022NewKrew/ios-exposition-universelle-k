@@ -8,7 +8,6 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         navigationItem.title = "메인"
-        //navigationController?.setNavigationBarHidden(true, animated: false)
         setUpUI()
     }
     
@@ -16,7 +15,6 @@ class MainViewController: UIViewController {
         view.addSubview(scrollView)
         scrollView.addSubview(mainView)
         arrangeConstraint(view: scrollView, guide: view.safeAreaLayoutGuide)
-        //scrollView.contentInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: -40)
         
         mainView.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
         mainView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
