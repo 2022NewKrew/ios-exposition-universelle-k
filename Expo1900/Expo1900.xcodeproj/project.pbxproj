@@ -17,6 +17,7 @@
 		0ED044C5278BCB1400E08E80 /* FileLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED044C3278BCB0C00E08E80 /* FileLoader.swift */; };
 		0ED044CC278BD08600E08E80 /* items.json in Resources */ = {isa = PBXBuildFile; fileRef = 0ED044CB278BD08600E08E80 /* items.json */; };
 		0ED044CE278BD09500E08E80 /* exposition_universelle_1900.json in Resources */ = {isa = PBXBuildFile; fileRef = 0ED044CD278BD09500E08E80 /* exposition_universelle_1900.json */; };
+		0EDE9D27278FB60A006BC814 /* UIStackView +.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDE9D26278FB60A006BC814 /* UIStackView +.swift */; };
 		0EE43DCF278D55D300F17B5C /* ExpoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE43DCE278D55D300F17B5C /* ExpoListViewController.swift */; };
 		C22C4D99278BC52F00398BCE /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = C22C4D98278BC52F00398BCE /* .swiftlint.yml */; };
 		C22C4DC2278BD42D00398BCE /* JSONParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22C4DC1278BD42D00398BCE /* JSONParser.swift */; };
@@ -52,6 +53,7 @@
 		0ED044C3278BCB0C00E08E80 /* FileLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileLoader.swift; sourceTree = "<group>"; };
 		0ED044CB278BD08600E08E80 /* items.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = items.json; sourceTree = "<group>"; };
 		0ED044CD278BD09500E08E80 /* exposition_universelle_1900.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = exposition_universelle_1900.json; sourceTree = "<group>"; };
+		0EDE9D26278FB60A006BC814 /* UIStackView +.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView +.swift"; sourceTree = "<group>"; };
 		0EE43DCE278D55D300F17B5C /* ExpoListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpoListViewController.swift; sourceTree = "<group>"; };
 		C22C4D98278BC52F00398BCE /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		C22C4DC1278BD42D00398BCE /* JSONParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONParser.swift; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 				C22C4DF2278D6C1E00398BCE /* UILabel +.swift */,
 				C22C4DF4278D6E1000398BCE /* UIView +.swift */,
 				0EB17E5C278E9C020038706F /* UIImageView +.swift */,
+				0EDE9D26278FB60A006BC814 /* UIStackView +.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -304,6 +307,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0EDE9D27278FB60A006BC814 /* UIStackView +.swift in Sources */,
 				C22C4DF0278D644200398BCE /* ExpoTableViewCell.swift in Sources */,
 				0E0FD294278D12E300971580 /* PosterViewController.swift in Sources */,
 				C22C4DF3278D6C1E00398BCE /* UILabel +.swift in Sources */,

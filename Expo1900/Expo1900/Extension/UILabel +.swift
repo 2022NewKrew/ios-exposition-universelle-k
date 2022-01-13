@@ -8,20 +8,19 @@
 import Foundation
 import UIKit
 
-extension UILabel {
-    static func make(with style: UIFont.TextStyle,
+extension UILabel {    
+    convenience init(with style: UIFont.TextStyle,
                      text: String = "",
                      textAlignment: NSTextAlignment = .center,
-                     numberOfLines: Int = 0) -> UILabel {
-        let label: UILabel = UILabel()
-        label.font = UIFont.preferredFont(forTextStyle: style)
-        label.textColor = UIColor.black
-        label.text = text
-        label.adjustsFontForContentSizeCategory = true
+                     numberOfLines: Int = 0) {
+        self.init()
+        self.font = UIFont.preferredFont(forTextStyle: style)
+        self.textColor = UIColor.black
+        self.text = text
+        self.adjustsFontForContentSizeCategory = true
         
-        label.textAlignment = textAlignment
-        label.numberOfLines = numberOfLines
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
+        self.textAlignment = textAlignment
+        self.numberOfLines = numberOfLines
+        self.translatesAutoresizingMaskIntoConstraints = false
     }
 }

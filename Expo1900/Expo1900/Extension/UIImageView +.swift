@@ -9,11 +9,10 @@ import Foundation
 import UIKit
 
 extension UIImageView {
-    static func make(imageName: String = "", contentMode: UIView.ContentMode = .scaleAspectFit) -> UIImageView {
-        let imageView: UIImageView = UIImageView()
-        imageView.image = imageName.isEmpty ? UIImage() : UIImage(named: imageName)
-        imageView.contentMode = contentMode
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        return imageView
+    convenience init(imageName: String = "", contentMode: UIView.ContentMode = .scaleToFill) {
+        self.init()
+        self.image = imageName.isEmpty ? UIImage() : UIImage(named: imageName)
+        self.contentMode = contentMode
+        self.translatesAutoresizingMaskIntoConstraints = false
     }
 }

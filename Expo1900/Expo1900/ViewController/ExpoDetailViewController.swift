@@ -9,17 +9,13 @@ import UIKit
 
 class ExpoDetailViewController: UIViewController {
     // MARK: - Views
-    private let expoImageView: UIImageView = UIImageView.make()
-    private let descLabel: UILabel = UILabel.make(with: .body, textAlignment: .left)
+    private let expoImageView: UIImageView = UIImageView(contentMode: .scaleAspectFit)
+    private let descLabel: UILabel = UILabel(with: .body, textAlignment: .left)
     
-    private lazy var contentStackView: UIStackView = {
-        let stackView: UIStackView = UIStackView(arrangedSubviews: [expoImageView, descLabel])
-        stackView.axis = .vertical
-        stackView.alignment = .center
-        stackView.spacing = 10
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        return stackView
-    }()
+    private lazy var contentStackView: UIStackView = UIStackView(views: [expoImageView,
+                                                                         descLabel],
+                                                                 axis: .vertical,
+                                                                 spacing: 10)
     
     private lazy var scrollView: UIScrollView = {
         let scrollView: UIScrollView = UIScrollView()

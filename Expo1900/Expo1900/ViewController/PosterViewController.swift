@@ -9,69 +9,62 @@ import UIKit
 
 class PosterViewController: UIViewController {
     // MARK: - Views
-    private let titleLabel: UILabel = UILabel.make(with: .title1)
+    private let titleLabel: UILabel = UILabel(with: .title1)
     
-    private let posterImageView: UIImageView = UIImageView.make(imageName: "poster")
+    private let posterImageView: UIImageView = UIImageView(imageName: "poster", contentMode: .scaleAspectFit)
     
-    private let visitorStaticLabel: UILabel = UILabel.make(with: .title3,
-                                                           text: "방문객",
-                                                           textAlignment: .right,
-                                                           numberOfLines: 1)
-    private let locationStaticLabel: UILabel = UILabel.make(with: .title3,
-                                                            text: "개최지",
-                                                            textAlignment: .right,
-                                                            numberOfLines: 1)
-    private let durationStaticLabel: UILabel = UILabel.make(with: .title3,
-                                                            text: "개최 기간",
-                                                            textAlignment: .right,
-                                                            numberOfLines: 1)
+    private let visitorStaticLabel: UILabel = UILabel(with: .title3,
+                                                      text: "방문객",
+                                                      textAlignment: .right,
+                                                      numberOfLines: 1)
+    private let locationStaticLabel: UILabel = UILabel(with: .title3,
+                                                       text: "개최지",
+                                                       textAlignment: .right,
+                                                       numberOfLines: 1)
+    private let durationStaticLabel: UILabel = UILabel(with: .title3,
+                                                       text: "개최 기간",
+                                                       textAlignment: .right,
+                                                       numberOfLines: 1)
     
-    private let visitorLabel: UILabel = UILabel.make(with: .body,
-                                                     textAlignment: .left,
-                                                     numberOfLines: 0)
-    private let locationLabel: UILabel = UILabel.make(with: .body, numberOfLines: 0)
-    private let durationLabel: UILabel = UILabel.make(with: .body, numberOfLines: 0)
+    private let visitorLabel: UILabel = UILabel(with: .body,
+                                                textAlignment: .left,
+                                                numberOfLines: 0)
+    private let locationLabel: UILabel = UILabel(with: .body, numberOfLines: 0)
+    private let durationLabel: UILabel = UILabel(with: .body, numberOfLines: 0)
     
-    private lazy var visitorStackView: UIStackView = makeHorizontalStackView(with: visitorStaticLabel,
-                                                                             visitorLabel,
-                                                                             spacing: 5)
-    private lazy var locationStackView: UIStackView = makeHorizontalStackView(with: locationStaticLabel,
-                                                                              locationLabel,
-                                                                              spacing: 5)
-    private lazy var durationStackView: UIStackView = makeHorizontalStackView(with: durationStaticLabel,
-                                                                              durationLabel,
-                                                                              spacing: 5)
+    private lazy var visitorStackView: UIStackView = UIStackView(views: [visitorStaticLabel, visitorLabel], spacing: 5)
+    private lazy var locationStackView: UIStackView = UIStackView(views: [locationStaticLabel, locationLabel], spacing: 5)
+    private lazy var durationStackView: UIStackView = UIStackView(views: [durationStaticLabel, durationLabel], spacing: 5)
     
-    private let descriptionLabel: UILabel = UILabel.make(with: .body, textAlignment: .left)
+    private let descriptionLabel: UILabel = UILabel(with: .body, textAlignment: .left)
     
-    private let leftFlagImageView: UIImageView = UIImageView.make(imageName: "flag")
-    private let rightFlagImageView: UIImageView = UIImageView.make(imageName: "flag")
+    private let leftFlagImageView: UIImageView = UIImageView(imageName: "flag", contentMode: .scaleAspectFit)
+    private let rightFlagImageView: UIImageView = UIImageView(imageName: "flag", contentMode: .scaleAspectFit)
     
     private lazy var showExpoButton: UIButton = {
         let button: UIButton = UIButton()
         button.setTitle("한국의 출품작 보러가기", for: .normal)
         button.setTitleColor(.systemBlue, for: .normal)
+        button.titleLabel?.font = UIFont.preferredFont(forTextStyle: .callout)
+        button.titleLabel?.adjustsFontForContentSizeCategory = true
+        button.titleLabel?.numberOfLines = 0
+        button.titleLabel?.textAlignment = .center
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(showExpoListViewController), for: .touchUpInside)
         return button
     }()
     
-    private lazy var buttonStackView: UIStackView = makeHorizontalStackView(with: leftFlagImageView,
-                                                                            showExpoButton,
-                                                                            rightFlagImageView,
-                                                                            spacing: 20)
+    private lazy var buttonStackView: UIStackView = UIStackView(views: [leftFlagImageView,
+                                                                        showExpoButton,
+                                                                        rightFlagImageView],
+                                                                spacing: 20)
     
-    private lazy var contentStackView: UIStackView = {
-        let stackView: UIStackView = UIStackView(arrangedSubviews: [titleLabel, posterImageView,
-                                                                    visitorStackView, locationStackView,
-                                                                    durationStackView, descriptionLabel,
-                                                                    buttonStackView])
-        stackView.axis = .vertical
-        stackView.alignment = .center
-        stackView.spacing = 7
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        return stackView
-    }()
+    private lazy var contentStackView: UIStackView = UIStackView(views: [titleLabel, posterImageView,
+                                                                         visitorStackView, locationStackView,
+                                                                         durationStackView, descriptionLabel,
+                                                                         buttonStackView],
+                                                                 axis: .vertical,
+                                                                 spacing: 7)
     
     private lazy var scrollView: UIScrollView = {
         let scrollView: UIScrollView = UIScrollView()
@@ -92,15 +85,6 @@ class PosterViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         hideNavigationBar()
-    }
-    
-    private func makeHorizontalStackView(with subviews: UIView..., spacing: CGFloat) -> UIStackView {
-        let stackView: UIStackView = UIStackView(arrangedSubviews: subviews)
-        stackView.axis = .horizontal
-        stackView.alignment = .center
-        stackView.spacing = spacing
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        return stackView
     }
     
     // MARK: - Setup
@@ -126,10 +110,10 @@ class PosterViewController: UIViewController {
         NSLayoutConstraint.activate([
             posterImageView.widthAnchor.constraint(equalTo: safeArea.widthAnchor, multiplier: 0.4),
             posterImageView.heightAnchor.constraint(equalTo: safeArea.widthAnchor, multiplier: 0.6),
-            leftFlagImageView.heightAnchor.constraint(equalToConstant: 20),
-            leftFlagImageView.widthAnchor.constraint(equalToConstant: 20),
-            rightFlagImageView.heightAnchor.constraint(equalToConstant: 20),
-            rightFlagImageView.widthAnchor.constraint(equalToConstant: 20)
+            leftFlagImageView.heightAnchor.constraint(equalToConstant: 40),
+            leftFlagImageView.widthAnchor.constraint(equalToConstant: 40),
+            rightFlagImageView.heightAnchor.constraint(equalToConstant: 40),
+            rightFlagImageView.widthAnchor.constraint(equalToConstant: 40)
         ])
     }
     

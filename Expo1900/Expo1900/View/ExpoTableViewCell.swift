@@ -8,28 +8,20 @@
 import UIKit
 
 class ExpoTableViewCell: UITableViewCell {
-    private let titleLabel: UILabel = UILabel.make(with: .title1, textAlignment: .left)
-    private let shortDescLabel: UILabel = UILabel.make(with: .body, textAlignment: .left)
+    private let titleLabel: UILabel = UILabel(with: .title1, textAlignment: .left)
+    private let shortDescLabel: UILabel = UILabel(with: .body, textAlignment: .left)
     
-    private lazy var labelStackView: UIStackView = {
-        let stackView: UIStackView = UIStackView(arrangedSubviews: [titleLabel, shortDescLabel])
-        stackView.axis = .vertical
-        stackView.alignment = .leading
-        stackView.spacing = 5
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        return stackView
-    }()
+    private lazy var labelStackView: UIStackView = UIStackView(views: [titleLabel,
+                                                                       shortDescLabel],
+                                                               axis: .vertical,
+                                                               alignment: .leading,
+                                                               spacing: 5)
     
-    private let expoImageView: UIImageView = UIImageView.make()
+    private let expoImageView: UIImageView = UIImageView(contentMode: .scaleAspectFit)
     
-    private lazy var contentStackView: UIStackView = {
-        let stackView: UIStackView = UIStackView(arrangedSubviews: [expoImageView, labelStackView])
-        stackView.axis = .horizontal
-        stackView.alignment = .center
-        stackView.spacing = 10
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        return stackView
-    }()
+    private lazy var contentStackView: UIStackView = UIStackView(views: [expoImageView,
+                                                                         labelStackView],
+                                                                 spacing: 10)
     
     // MARK: - Init
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
