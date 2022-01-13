@@ -161,13 +161,13 @@
 				C22C4DEE278D642500398BCE /* ViewController */,
 				C22C4DED278D641100398BCE /* View */,
 				0ED044CA278BCFF700E08E80 /* Data */,
-				C79FF4B42589F401005FB0FD /* AppDelegate.swift */,
+				C22C4DC1278BD42D00398BCE /* JSONParser.swift */,
 				0ED044C3278BCB0C00E08E80 /* FileLoader.swift */,
+				C79FF4B42589F401005FB0FD /* AppDelegate.swift */,
 				C79FF4B62589F401005FB0FD /* SceneDelegate.swift */,
 				C79FF4BD2589F404005FB0FD /* Assets.xcassets */,
 				C79FF4BF2589F404005FB0FD /* LaunchScreen.storyboard */,
 				C79FF4C22589F404005FB0FD /* Info.plist */,
-				C22C4DC1278BD42D00398BCE /* JSONParser.swift */,
 			);
 			path = Expo1900;
 			sourceTree = "<group>";

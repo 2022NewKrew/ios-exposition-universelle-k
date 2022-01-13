@@ -10,12 +10,16 @@ import UIKit
 
 struct ExpoItem: Codable {
     let name: String
-    let imageName: String
+    let imageName: String?
     let shortDesc: String
     let longDesc: String
     
     var image: UIImage? {
-        UIImage(named: imageName)
+        guard let imageName: String = imageName else {
+            assertionFailure()
+            return nil
+        }
+        return UIImage(named: imageName)
     }
     
     enum CodingKeys: String, CodingKey {
@@ -25,3 +29,4 @@ struct ExpoItem: Codable {
         case longDesc = "desc"
     }
 }
+

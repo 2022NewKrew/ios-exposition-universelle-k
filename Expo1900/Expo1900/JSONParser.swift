@@ -16,6 +16,7 @@ class JSONParser {
         do {
             return try JSONDecoder().decode(modelType, from: data)
         } catch {
+            assertionFailure()
             print(error.localizedDescription)
             return nil
         }

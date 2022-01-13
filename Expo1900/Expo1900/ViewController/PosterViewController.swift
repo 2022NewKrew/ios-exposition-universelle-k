@@ -11,7 +11,7 @@ class PosterViewController: UIViewController {
     // MARK: - Views
     private let titleLabel: UILabel = UILabel(with: .title1)
     
-    private let posterImageView: UIImageView = UIImageView(imageName: "poster", contentMode: .scaleAspectFit)
+    private let posterImageView: UIImageView = UIImageView(contentMode: .scaleAspectFit)
     
     private let visitorStaticLabel: UILabel = UILabel(with: .title3,
                                                       text: "방문객",
@@ -132,6 +132,7 @@ class PosterViewController: UIViewController {
         locationLabel.text = ": \(model.location)"
         durationLabel.text = ": \(model.duration)"
         descriptionLabel.text = "\(model.description)"
+        posterImageView.image = model.image
     }
     
     private func hideNavigationBar() {
