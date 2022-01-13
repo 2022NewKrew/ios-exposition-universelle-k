@@ -1,7 +1,7 @@
 import UIKit
 
 class MainView: UIStackView {
-    private var expositionTitle: UILabel = {
+    private let expositionTitle: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
         label.font = UIFont.preferredFont(forTextStyle: .title1)
@@ -9,14 +9,14 @@ class MainView: UIStackView {
         return label
     }()
     
-    private var expositionImageView: UIImageView = {
+    private let expositionImageView: UIImageView = {
         let imageView: UIImageView = UIImageView()
         imageView.image = UIImage(named: "poster")
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
     
-    private var expositionInfomation: UILabel = {
+    private let expositionInfomation: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
         label.font = UIFont.preferredFont(forTextStyle: .title3)
@@ -24,7 +24,7 @@ class MainView: UIStackView {
         return label
     }()
     
-    private var expositionDescription: UILabel = {
+    private let expositionDescription: UILabel = {
         let label = UILabel()
         label.font = UIFont.preferredFont(forTextStyle: .body)
         label.numberOfLines = 0
@@ -40,11 +40,11 @@ class MainView: UIStackView {
         return stackView
     }()
     
-    private var koreanEntries: UIButton = {
+    private let koreanEntries: UIButton = {
         let button = UIButton()
         button.setTitle("한국의 출품작 보러가기", for: .normal)
         button.setTitleColor(.systemBlue, for: .normal)
-        button.addTarget(self, action: #selector(MainViewController.toKoreanEntries), for: .touchUpInside)
+        button.addTarget(self, action: #selector(MainViewController.moveKoreanEntries), for: .touchUpInside)
         return button
     }()
     
@@ -59,7 +59,7 @@ class MainView: UIStackView {
     }
     
     private func decodeJsonData() {
-        guard let expositionData = Decoder.decodeEntry(type: ExpositionData.self, from: "exposition_universelle_1900")
+        guard let expositionData = Decoder.decodeJSONData(type: ExpositionData.self, from: "exposition_universelle_1900")
         else { return }
         expositionTitle.text = expositionData.title
         expositionInfomation.text = """

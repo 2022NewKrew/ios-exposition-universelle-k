@@ -6,24 +6,34 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.backgroundColor = .systemBackground
         navigationItem.title = "메인"
-        navigationController?.setNavigationBarHidden(true, animated: false)
-        createUI()
+        //navigationController?.setNavigationBarHidden(true, animated: false)
+        setUpUI()
     }
     
-    func createUI() {
+    func setUpUI() {
         view.addSubview(scrollView)
         scrollView.addSubview(mainView)
-        arrangeConstraint(view: scrollView, guide: view.layoutMarginsGuide)
+        arrangeConstraint(view: scrollView, guide: view.safeAreaLayoutGuide)
+        //scrollView.contentInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: -40)
+        
         arrangeConstraint(view: mainView, guide: scrollView.contentLayoutGuide)
         mainView.widthAnchor.constraint(equalTo: scrollView.frameLayoutGuide.widthAnchor).isActive = true
     }
     
     @objc
-    func toKoreanEntries() {
-        let secondView = EntryListViewController()
-        self.navigationController?.pushViewController(secondView, animated: true)
+    func moveKoreanEntries() {
+        let entryListView = EntryListViewController()
+        self.navigationController?.pushViewController(entryListView, animated: true)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        navigationController?.setNavigationBarHidden(false, animated: false)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.setNavigationBarHidden(true, animated: false)
     }
 }
 

@@ -6,19 +6,19 @@ class EntryDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
-        createUI()
+        view.backgroundColor = .systemBackground
+        setupUI()
     }
     
-    func pass(data: EntryData) {
-        navigationItem.title = data.name
-        detailView.makeDetailView(data: data)
+    func configure(entry: EntryData) {
+        navigationItem.title = entry.name
+        detailView.setDetailView(data: entry)
     }
     
-    func createUI() {
+    private func setupUI() {
         view.addSubview(scrollView)
         scrollView.addSubview(detailView)
-        arrangeConstraint(view: scrollView, guide: view.layoutMarginsGuide)
+        arrangeConstraint(view: scrollView, guide: view.safeAreaLayoutGuide)
         arrangeConstraint(view: detailView, guide: scrollView.contentLayoutGuide)
         detailView.widthAnchor.constraint(equalTo: scrollView.frameLayoutGuide.widthAnchor).isActive = true
     }

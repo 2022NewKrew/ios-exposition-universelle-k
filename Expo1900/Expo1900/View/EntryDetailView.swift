@@ -1,13 +1,13 @@
 import UIKit
 
 class EntryDetailView: UIStackView {
-    private var entryImage: UIImageView = {
+    private let entryImage: UIImageView = {
         let imageView: UIImageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
 
-    private var entryDescription: UILabel = {
+    private let entryDescription: UILabel = {
         let label = UILabel()
         label.font = UIFont.preferredFont(forTextStyle: .body)
         label.numberOfLines = 0
@@ -33,7 +33,7 @@ class EntryDetailView: UIStackView {
         self.translatesAutoresizingMaskIntoConstraints = false
     }
     
-    func makeDetailView(data: EntryData) {
+    func setDetailView(data: EntryData) {
         entryImage.image = UIImage(named: data.image)
         entryDescription.text = data.detailDescription
     }

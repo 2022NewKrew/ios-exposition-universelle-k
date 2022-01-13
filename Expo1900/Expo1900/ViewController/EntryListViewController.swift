@@ -1,26 +1,27 @@
 import UIKit
 
-class EntryListViewController: UIViewController {
+class EntryListViewController: UIViewController, UITableViewDelegate {
     var tableView: UITableView = UITableView()
     var entryItems: [EntryData] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.backgroundColor = .systemBackground
         navigationItem.title = "한국의 출품작"
-        navigationController?.setNavigationBarHidden(false, animated: false)
-        view.addSubview(tableView)
-        arrangeConstraint(view: tableView, guide: view.layoutMarginsGuide)
-        tableView.delegate = self
-        tableView.dataSource = self
-        if let decodeResult = Decoder.decodeEntry(type: [EntryData].self, from: "items") {
+        
+        setUpTableView()
+        
+        if let decodeResult = Decoder.decodeJSONData(type: [EntryData].self, from: "items") {
             entryItems = decodeResult
         }
     }
-}
-
-extension EntryListViewController: UITableViewDelegate {
     
+    private func setUpTableView() {
+        view.addSubview(tableView)
+        arrangeConstraint(view: tableView, guide: view.safeAreaLayoutGuide)
+        tableView.delegate = self
+        tableView.dataSource = self
+    }
 }
 
 extension EntryListViewController: UITableViewDataSource {
@@ -30,13 +31,14 @@ extension EntryListViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = EntryTableViewCell()
-        cell.makeEntryCell(data: entryItems[indexPath.row])
+        cell.setEntryCell(data: entryItems[indexPath.row])
+        cell.accessoryType = .disclosureIndicator
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let thirdView = EntryDetailViewController()
-        self.navigationController?.pushViewController(thirdView, animated: true)
-        thirdView.pass(data: entryItems[indexPath.row])
+        let entryDetailView = EntryDetailViewController()
+        self.navigationController?.pushViewController(entryDetailView, animated: true)
+        entryDetailView.configure(entry: entryItems[indexPath.row])
     }
 }
