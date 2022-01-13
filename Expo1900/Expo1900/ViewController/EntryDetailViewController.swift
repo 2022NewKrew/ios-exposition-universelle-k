@@ -1,13 +1,23 @@
 import UIKit
 
 class EntryDetailViewController: UIViewController {
-    let scrollView = UIScrollView()
-    let detailView = EntryDetailView()
+    let scrollView: UIScrollView
+    let detailView: EntryDetailView
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         setupUI()
+    }
+    
+    init(data: EntryData) {
+        self.scrollView = UIScrollView()
+        self.detailView = EntryDetailView(entry: data)
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     func configure(entry: EntryData) {

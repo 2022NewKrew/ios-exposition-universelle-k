@@ -2,6 +2,8 @@ import UIKit
 
 class EntryTableViewCell: UITableViewCell {
     
+    static let identifier = "entryCell"
+    
     private let entryImage: UIImageView = {
         let imageView: UIImageView = UIImageView()
         imageView.contentMode = .scaleAspectFit

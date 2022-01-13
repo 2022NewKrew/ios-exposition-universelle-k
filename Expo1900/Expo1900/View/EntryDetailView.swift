@@ -14,9 +14,10 @@ class EntryDetailView: UIStackView {
         return label
     }()
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    init(entry: EntryData) {
+        super.init(frame: .zero)
         settingStackView()
+        setDetailView(data: entry)
     }
 
     required init(coder: NSCoder) {

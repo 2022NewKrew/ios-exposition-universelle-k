@@ -30,15 +30,14 @@ extension EntryListViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = EntryTableViewCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: EntryTableViewCell.identifier) as? EntryTableViewCell ?? EntryTableViewCell()
         cell.setEntryCell(data: entryItems[indexPath.row])
         cell.accessoryType = .disclosureIndicator
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let entryDetailView = EntryDetailViewController()
+        let entryDetailView = EntryDetailViewController(data: entryItems[indexPath.row])
         self.navigationController?.pushViewController(entryDetailView, animated: true)
-        entryDetailView.configure(entry: entryItems[indexPath.row])
     }
 }
