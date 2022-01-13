@@ -7,23 +7,33 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C2130FC8278C1948009E2A8C /* Masterpiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2130FC7278C1948009E2A8C /* Masterpiece.swift */; };
+		C206CF0E278D68FC00911217 /* JsonParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C206CF0D278D68FC00911217 /* JsonParser.swift */; };
+		C206CF10278D735800911217 /* Int+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C206CF0F278D735800911217 /* Int+Extension.swift */; };
+		C2130FC8278C1948009E2A8C /* Heritage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2130FC7278C1948009E2A8C /* Heritage.swift */; };
 		C2130FCA278C1AF4009E2A8C /* InternationalExposition.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2130FC9278C1AF4009E2A8C /* InternationalExposition.swift */; };
+		C2679EA3278EA0FF008C5013 /* HeritageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2679EA2278EA0FF008C5013 /* HeritageViewController.swift */; };
+		C2DBF1FA278D772600B764D2 /* HeritageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DBF1F9278D772600B764D2 /* HeritageTableViewController.swift */; };
+		C2DBF1FC278D775600B764D2 /* HeritageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2DBF1FB278D775600B764D2 /* HeritageTableViewCell.swift */; };
 		C79FF4B52589F401005FB0FD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79FF4B42589F401005FB0FD /* AppDelegate.swift */; };
 		C79FF4B72589F401005FB0FD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79FF4B62589F401005FB0FD /* SceneDelegate.swift */; };
-		C79FF4B92589F401005FB0FD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79FF4B82589F401005FB0FD /* ViewController.swift */; };
+		C79FF4B92589F401005FB0FD /* ExpoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79FF4B82589F401005FB0FD /* ExpoViewController.swift */; };
 		C79FF4BC2589F401005FB0FD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C79FF4BA2589F401005FB0FD /* Main.storyboard */; };
 		C79FF4BE2589F404005FB0FD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C79FF4BD2589F404005FB0FD /* Assets.xcassets */; };
 		C79FF4C12589F404005FB0FD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C79FF4BF2589F404005FB0FD /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		C2130FC7278C1948009E2A8C /* Masterpiece.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Masterpiece.swift; sourceTree = "<group>"; };
+		C206CF0D278D68FC00911217 /* JsonParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonParser.swift; sourceTree = "<group>"; };
+		C206CF0F278D735800911217 /* Int+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Extension.swift"; sourceTree = "<group>"; };
+		C2130FC7278C1948009E2A8C /* Heritage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Heritage.swift; sourceTree = "<group>"; };
 		C2130FC9278C1AF4009E2A8C /* InternationalExposition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternationalExposition.swift; sourceTree = "<group>"; };
+		C2679EA2278EA0FF008C5013 /* HeritageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeritageViewController.swift; sourceTree = "<group>"; };
+		C2DBF1F9278D772600B764D2 /* HeritageTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeritageTableViewController.swift; sourceTree = "<group>"; };
+		C2DBF1FB278D775600B764D2 /* HeritageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeritageTableViewCell.swift; sourceTree = "<group>"; };
 		C79FF4B12589F401005FB0FD /* Expo1900.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Expo1900.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C79FF4B42589F401005FB0FD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C79FF4B62589F401005FB0FD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		C79FF4B82589F401005FB0FD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		C79FF4B82589F401005FB0FD /* ExpoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpoViewController.swift; sourceTree = "<group>"; };
 		C79FF4BB2589F401005FB0FD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C79FF4BD2589F404005FB0FD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C79FF4C02589F404005FB0FD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -41,6 +51,42 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C2679EA4278EB41A008C5013 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				C79FF4B82589F401005FB0FD /* ExpoViewController.swift */,
+				C2DBF1F9278D772600B764D2 /* HeritageTableViewController.swift */,
+				C2679EA2278EA0FF008C5013 /* HeritageViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		C2679EA5278EB43A008C5013 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C2130FC7278C1948009E2A8C /* Heritage.swift */,
+				C2130FC9278C1AF4009E2A8C /* InternationalExposition.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C2679EA6278EB455008C5013 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C2DBF1FB278D775600B764D2 /* HeritageTableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C2679EA7278EB460008C5013 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				C206CF0D278D68FC00911217 /* JsonParser.swift */,
+				C206CF0F278D735800911217 /* Int+Extension.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		C79FF4A82589F401005FB0FD = {
 			isa = PBXGroup;
 			children = (
@@ -60,15 +106,16 @@
 		C79FF4B32589F401005FB0FD /* Expo1900 */ = {
 			isa = PBXGroup;
 			children = (
+				C2679EA6278EB455008C5013 /* View */,
+				C2679EA5278EB43A008C5013 /* Model */,
+				C2679EA4278EB41A008C5013 /* ViewController */,
+				C2679EA7278EB460008C5013 /* Utils */,
 				C79FF4B42589F401005FB0FD /* AppDelegate.swift */,
 				C79FF4B62589F401005FB0FD /* SceneDelegate.swift */,
-				C79FF4B82589F401005FB0FD /* ViewController.swift */,
 				C79FF4BA2589F401005FB0FD /* Main.storyboard */,
 				C79FF4BD2589F404005FB0FD /* Assets.xcassets */,
 				C79FF4BF2589F404005FB0FD /* LaunchScreen.storyboard */,
 				C79FF4C22589F404005FB0FD /* Info.plist */,
-				C2130FC7278C1948009E2A8C /* Masterpiece.swift */,
-				C2130FC9278C1AF4009E2A8C /* InternationalExposition.swift */,
 			);
 			path = Expo1900;
 			sourceTree = "<group>";
@@ -143,10 +190,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C79FF4B92589F401005FB0FD /* ViewController.swift in Sources */,
+				C79FF4B92589F401005FB0FD /* ExpoViewController.swift in Sources */,
+				C206CF0E278D68FC00911217 /* JsonParser.swift in Sources */,
 				C2130FCA278C1AF4009E2A8C /* InternationalExposition.swift in Sources */,
+				C206CF10278D735800911217 /* Int+Extension.swift in Sources */,
 				C79FF4B52589F401005FB0FD /* AppDelegate.swift in Sources */,
-				C2130FC8278C1948009E2A8C /* Masterpiece.swift in Sources */,
+				C2679EA3278EA0FF008C5013 /* HeritageViewController.swift in Sources */,
+				C2DBF1FC278D775600B764D2 /* HeritageTableViewCell.swift in Sources */,
+				C2DBF1FA278D772600B764D2 /* HeritageTableViewController.swift in Sources */,
+				C2130FC8278C1948009E2A8C /* Heritage.swift in Sources */,
 				C79FF4B72589F401005FB0FD /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -1,5 +1,5 @@
 //
-//  Masterpiece.swift
+//  Heritage.swift
 //  Expo1900
 //
 //  Created by kakao on 2022/01/10.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Masterpiece: Codable {
+struct Heritage: Decodable {
     let name: String
     let imageName: String
     let shortDescription: String
