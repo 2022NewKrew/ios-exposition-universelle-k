@@ -20,6 +20,7 @@ class EntryTableViewCell: UITableViewCell {
     private let entryShortDescription: UILabel = {
         let label: UILabel = UILabel()
         label.numberOfLines = 0
+        label.font = UIFont.preferredFont(forTextStyle: .body)
         return label
     }()
     

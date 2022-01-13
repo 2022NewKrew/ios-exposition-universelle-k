@@ -18,8 +18,11 @@ class MainViewController: UIViewController {
         arrangeConstraint(view: scrollView, guide: view.safeAreaLayoutGuide)
         //scrollView.contentInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: -40)
         
-        arrangeConstraint(view: mainView, guide: scrollView.contentLayoutGuide)
-        mainView.widthAnchor.constraint(equalTo: scrollView.frameLayoutGuide.widthAnchor).isActive = true
+        mainView.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
+        mainView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
+        mainView.widthAnchor.constraint(equalTo: scrollView.widthAnchor, constant: -50).isActive = true
+        
+        mainView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
     }
     
     @objc

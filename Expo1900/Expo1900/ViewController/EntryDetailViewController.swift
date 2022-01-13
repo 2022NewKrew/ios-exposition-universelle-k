@@ -14,22 +14,21 @@ class EntryDetailViewController: UIViewController {
         self.scrollView = UIScrollView()
         self.detailView = EntryDetailView(entry: data)
         super.init(nibName: nil, bundle: nil)
+        navigationItem.title = data.name
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure(entry: EntryData) {
-        navigationItem.title = entry.name
-        detailView.setDetailView(data: entry)
-    }
-    
     private func setupUI() {
         view.addSubview(scrollView)
         scrollView.addSubview(detailView)
         arrangeConstraint(view: scrollView, guide: view.safeAreaLayoutGuide)
-        arrangeConstraint(view: detailView, guide: scrollView.contentLayoutGuide)
-        detailView.widthAnchor.constraint(equalTo: scrollView.frameLayoutGuide.widthAnchor).isActive = true
+        
+        detailView.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
+        detailView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
+        detailView.widthAnchor.constraint(equalTo: scrollView.widthAnchor, constant: -50).isActive = true
+        detailView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
     }
 }
