@@ -90,18 +90,17 @@ class MainView: UIStackView {
         guard let formattedVisitor = numberFormatter.string(from: NSNumber(value: expositionData.visitorsCount)) else { return }
         
         expositionVisitor.text = "방문객: \(formattedVisitor)명"
+        expositionVisitor.font = UIFont.preferredFont(forTextStyle: .body)
         expositionLocation.text = "개최지: \(expositionData.location)"
-        expositionDuration.text = "개최 기간: \(expositionData.duration)"
-//        expositionVisitor.changeFont(targetString: expositionVisitor.text ?? "", font: UIFont.preferredFont(forTextStyle: .body))
-//        expositionLocation.changeFont(targetString: "\(expositionData.location)", font: UIFont.preferredFont(forTextStyle: .body))
-//        expositionDuration.changeFont(targetString: "\(expositionData.duration)", font: UIFont.preferredFont(forTextStyle: .body))
+        expositionDuration.text = "개최기간: \(expositionData.duration)"
+
         expositionDescription.text = expositionData.description
     }
     
     private func emphasizeLabels() {
-        expositionVisitor.changeFont(targetString: "방문객", font: UIFont.preferredFont(forTextStyle: .title3))
-        expositionLocation.changeFont(targetString: "개최지", font: UIFont.preferredFont(forTextStyle: .title3))
-        expositionDuration.changeFont(targetString: "개최 기간", font: UIFont.preferredFont(forTextStyle: .title3))
+        expositionVisitor.changeFont(targetString: "방문객:", font: UIFont.preferredFont(forTextStyle: .title3))
+        expositionLocation.changeFont(targetString: "개최지:", font: UIFont.preferredFont(forTextStyle: .title3))
+        expositionDuration.changeFont(targetString: "개최기간:", font: UIFont.preferredFont(forTextStyle: .title3))
     }
     
     private func settingStackView() {
@@ -133,9 +132,12 @@ class MainView: UIStackView {
 extension UILabel {
     func changeFont(targetString: String, font: UIFont) {
         let fullText = self.text ?? ""
+        let splitted = fullText.split(separator: ":").map{ String.init($0) }
         let range = (fullText as NSString).range(of: targetString)
+        let range2 = (fullText as NSString).range(of: splitted[1])
         let attributedString = NSMutableAttributedString(string: fullText)
         attributedString.addAttribute(.font, value: font, range: range)
+        attributedString.addAttribute(.font, value: UIFont.preferredFont(forTextStyle: .body), range: range2)
         self.attributedText = attributedString
     }
 }
