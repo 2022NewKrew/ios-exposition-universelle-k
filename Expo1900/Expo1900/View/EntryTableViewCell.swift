@@ -13,12 +13,15 @@ class EntryTableViewCell: UITableViewCell {
     
     private let entryName: UILabel = {
         let label: UILabel = UILabel()
+        label.adjustsFontForContentSizeCategory = true
         label.font = UIFont.preferredFont(forTextStyle: .title1)
+        label.numberOfLines = 0
         return label
     }()
     
     private let entryShortDescription: UILabel = {
         let label: UILabel = UILabel()
+        label.adjustsFontForContentSizeCategory = true
         label.numberOfLines = 0
         label.font = UIFont.preferredFont(forTextStyle: .body)
         return label

@@ -18,9 +18,9 @@ class MainViewController: UIViewController {
         
         mainView.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
         mainView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
-        mainView.widthAnchor.constraint(equalTo: scrollView.widthAnchor, constant: -50).isActive = true
-        
-        mainView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 25).isActive = true
+//        mainView.widthAnchor.constraint(equalTo: scrollView.frameLayoutGuide.widthAnchor, constant: -20).isActive = true
+        mainView.leadingAnchor.constraint(equalTo: scrollView.frameLayoutGuide.leadingAnchor, constant: 10).isActive = true
+        mainView.trailingAnchor.constraint(equalTo: scrollView.frameLayoutGuide.trailingAnchor, constant: -10).isActive = true
     }
     
     @objc

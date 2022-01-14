@@ -5,12 +5,13 @@ class EntryDetailView: UIStackView {
         let imageView: UIImageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.heightAnchor.constraint(equalToConstant: 200).isActive = true
+        imageView.heightAnchor.constraint(lessThanOrEqualToConstant: 200).isActive = true
         return imageView
     }()
 
     private let entryDescription: UILabel = {
         let label = UILabel()
+        label.adjustsFontForContentSizeCategory = true
         label.font = UIFont.preferredFont(forTextStyle: .body)
         label.numberOfLines = 0
         return label
