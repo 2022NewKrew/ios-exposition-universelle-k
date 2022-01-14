@@ -96,8 +96,8 @@ class MainView: UIStackView {
         return label
     }()
     
-    private lazy var koreanButtonView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [makeFlag(), koreanEntries, makeFlag()])
+    private let koreanButtonView: UIStackView = {
+        let stackView = UIStackView()
         stackView.axis = .horizontal
         stackView.distribution = .equalCentering
         stackView.spacing = 20
@@ -117,6 +117,10 @@ class MainView: UIStackView {
         super.init(frame: frame)
         settingStackView()
         decodeJsonData()
+        
+        koreanButtonView.addArrangedSubview(makeFlag())
+        koreanButtonView.addArrangedSubview(koreanEntries)
+        koreanButtonView.addArrangedSubview(makeFlag())
     }
 
     required init(coder: NSCoder) {

@@ -20,7 +20,7 @@ class MainViewController: UIViewController {
         mainView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
         mainView.widthAnchor.constraint(equalTo: scrollView.widthAnchor, constant: -50).isActive = true
         
-        mainView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
+        mainView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 25).isActive = true
     }
     
     @objc

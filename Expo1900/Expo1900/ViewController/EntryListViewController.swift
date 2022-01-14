@@ -19,6 +19,7 @@ class EntryListViewController: UIViewController {
     private func setUpTableView() {
         view.addSubview(tableView)
         arrangeConstraint(view: tableView, guide: view.safeAreaLayoutGuide)
+        tableView.register(EntryTableViewCell.self, forCellReuseIdentifier: EntryTableViewCell.identifier)
         tableView.delegate = self
         tableView.dataSource = self
     }
@@ -28,6 +29,7 @@ extension EntryListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let entryDetailView = EntryDetailViewController(data: entryItems[indexPath.row])
         self.navigationController?.pushViewController(entryDetailView, animated: true)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
 
@@ -37,7 +39,7 @@ extension EntryListViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: EntryTableViewCell.identifier) as? EntryTableViewCell ?? EntryTableViewCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: EntryTableViewCell.identifier, for: indexPath) as? EntryTableViewCell ?? EntryTableViewCell()
         cell.setEntryCell(data: entryItems[indexPath.row])
         cell.accessoryType = .disclosureIndicator
         return cell

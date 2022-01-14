@@ -76,8 +76,8 @@
 		C241801C278EBAC10049BAEC /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				C79FF4B82589F401005FB0FD /* EntryListViewController.swift */,
 				C270DFB1278D49FD00546E42 /* MainViewController.swift */,
+				C79FF4B82589F401005FB0FD /* EntryListViewController.swift */,
 				C2418016278EADDE0049BAEC /* EntryDetailViewController.swift */,
 			);
 			path = ViewController;

@@ -4,6 +4,8 @@ class EntryDetailView: UIStackView {
     private let entryImage: UIImageView = {
         let imageView: UIImageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.heightAnchor.constraint(equalToConstant: 200).isActive = true
         return imageView
     }()
 
@@ -16,7 +18,7 @@ class EntryDetailView: UIStackView {
     
     init(entry: EntryData) {
         super.init(frame: .zero)
-        settingStackView()
+        setUpStackView()
         setDetailView(data: entry)
     }
 
@@ -24,7 +26,7 @@ class EntryDetailView: UIStackView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func settingStackView() {
+    private func setUpStackView() {
         self.addArrangedSubview(entryImage)
         self.addArrangedSubview(entryDescription)
         self.alignment = .center
