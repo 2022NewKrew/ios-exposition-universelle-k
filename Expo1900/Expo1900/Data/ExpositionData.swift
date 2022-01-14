@@ -1,6 +1,6 @@
 import Foundation
 
-struct ExpositionData: Codable {
+struct ExpositionData: Decodable {
     let title: String
     let visitorsCount: Int
     let location: String
