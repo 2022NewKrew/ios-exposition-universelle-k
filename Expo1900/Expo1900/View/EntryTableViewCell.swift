@@ -65,7 +65,7 @@ class EntryTableViewCell: UITableViewCell {
         contentView.addSubview(entryInfomationStack)
         
         entryImage.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.2).isActive = true
-        entryImage.heightAnchor.constraint(equalTo: entryImage.widthAnchor).isActive = true
+        entryImage.heightAnchor.constraint(lessThanOrEqualTo: entryImage.widthAnchor).isActive = true
         
         entryInfomationStack.topAnchor.constraint(equalTo: contentView.layoutMarginsGuide.topAnchor).isActive = true
         entryInfomationStack.bottomAnchor.constraint(equalTo: contentView.layoutMarginsGuide.bottomAnchor).isActive = true

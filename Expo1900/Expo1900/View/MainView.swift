@@ -62,7 +62,16 @@ class MainView: UIStackView {
         let button = UIButton()
         button.setTitle("한국의 출품작 보러가기", for: .normal)
         button.setTitleColor(.systemBlue, for: .normal)
+        button.titleLabel?.adjustsFontForContentSizeCategory = true
+        button.titleLabel?.numberOfLines = 0
+        button.titleLabel?.font = UIFont.preferredFont(forTextStyle: .body)
+        
         button.addTarget(self, action: #selector(MainViewController.moveKoreanEntries), for: .touchUpInside)
+       
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.titleLabel?.topAnchor.constraint(equalTo: button.topAnchor, constant: 15).isActive = true
+        button.titleLabel?.bottomAnchor.constraint(equalTo: button.bottomAnchor, constant: -15).isActive = true
+        
         return button
     }()
     
