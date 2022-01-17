@@ -79,6 +79,7 @@ class PosterViewController: UIViewController {
         title = "메인"
         view.backgroundColor = UIColor.white
         setupScrollView()
+        setupExpoButton()
         bindExpositionModel()
     }
     
@@ -117,6 +118,11 @@ class PosterViewController: UIViewController {
             rightFlagImageView.heightAnchor.constraint(equalToConstant: 40),
             rightFlagImageView.widthAnchor.constraint(equalToConstant: 40)
         ])
+    }
+    
+    private func setupExpoButton() {
+        showExpoButton.titleLabel?.topAnchor.constraint(equalTo: showExpoButton.topAnchor, constant: 15).isActive = true
+        showExpoButton.titleLabel?.bottomAnchor.constraint(equalTo: showExpoButton.bottomAnchor, constant: -15).isActive = true
     }
     
     private func bindExpositionModel() {

@@ -64,14 +64,15 @@ class ExpoDetailViewController: UIViewController {
         NSLayoutConstraint.activate([
             outerStackView.topAnchor.constraint(equalTo: safeArea.topAnchor),
             outerStackView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            outerStackView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
+            outerStackView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 12),
             outerStackView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor),
             scrollView.topAnchor.constraint(equalTo: outerStackView.topAnchor),
             scrollView.bottomAnchor.constraint(equalTo: outerStackView.bottomAnchor),
-            contentStackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor, constant: -24),
-            contentStackView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
+            contentStackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor, constant: -12),
             contentStackView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 10),
             contentStackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -20),
+            contentStackView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
+            contentStackView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -12),
             descLabel.widthAnchor.constraint(equalTo: contentStackView.widthAnchor)
         ])
     }
