@@ -24,6 +24,12 @@ class ExpoDetailViewController: UIViewController {
         return scrollView
     }()
     
+    private lazy var outerStackView: UIStackView = UIStackView(views: [scrollView],
+                                                               axis: .horizontal,
+                                                               spacing: 20)
+    
+    private var expoImageLandscapeWidthConstraint: NSLayoutConstraint = NSLayoutConstraint()
+    
     // MARK: - Properties
     private let expoItem: ExpoItem
     
@@ -43,21 +49,30 @@ class ExpoDetailViewController: UIViewController {
         view.backgroundColor = .white
         setupScrollView()
         bindExpoItem()
+        setupExpoImageView()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(handleOrientationLayout), name: UIDevice.orientationDidChangeNotification, object: nil)
+        
+        handleOrientationLayout()
     }
     
     // MARK: - Setup
     private func setupScrollView() {
-        view.addSubview(scrollView)
+        view.addSubview(outerStackView)
+        let safeArea: UILayoutGuide = view.safeAreaLayoutGuide
         
         NSLayoutConstraint.activate([
-            scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            outerStackView.topAnchor.constraint(equalTo: safeArea.topAnchor),
+            outerStackView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            outerStackView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
+            outerStackView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor),
+            scrollView.topAnchor.constraint(equalTo: outerStackView.topAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: outerStackView.bottomAnchor),
             contentStackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor, constant: -24),
             contentStackView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
             contentStackView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 10),
-            contentStackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -20)
+            contentStackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -20),
+            descLabel.widthAnchor.constraint(equalTo: contentStackView.widthAnchor)
         ])
     }
     
@@ -65,5 +80,29 @@ class ExpoDetailViewController: UIViewController {
         title = expoItem.name
         expoImageView.image = expoItem.image
         descLabel.text = expoItem.longDesc
+    }
+    
+    private func setupExpoImageView() {
+        let imageWidth: CGFloat = expoImageView.intrinsicContentSize.width
+        let imageHeight: CGFloat = expoImageView.intrinsicContentSize.height
+        let imageRatio: CGFloat = imageHeight / imageWidth
+        
+        expoImageView.heightAnchor.constraint(equalTo: expoImageView.widthAnchor, multiplier: imageRatio).isActive = true
+        expoImageLandscapeWidthConstraint = expoImageView.widthAnchor.constraint(lessThanOrEqualTo: view.safeAreaLayoutGuide.widthAnchor, multiplier: 0.3)
+    }
+    
+    @objc
+    func handleOrientationLayout() {
+        if UIDevice.current.orientation.isLandscape {
+            expoImageView.removeFromSuperview()
+            outerStackView.insertArrangedSubview(expoImageView, at: 0)
+            expoImageLandscapeWidthConstraint.isActive = true
+            view.layoutIfNeeded()
+        } else if UIDevice.current.orientation.isPortrait {
+            expoImageView.removeFromSuperview()
+            contentStackView.insertArrangedSubview(expoImageView, at: 0)
+            expoImageLandscapeWidthConstraint.isActive = false
+            view.layoutIfNeeded()
+        }
     }
 }

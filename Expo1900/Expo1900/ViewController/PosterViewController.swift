@@ -91,11 +91,13 @@ class PosterViewController: UIViewController {
     private func setupScrollView() {
         view.addSubview(scrollView)
         
+        let safeArea: UILayoutGuide = view.safeAreaLayoutGuide
+        
         NSLayoutConstraint.activate([
-            scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            scrollView.topAnchor.constraint(equalTo: safeArea.topAnchor),
             scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            scrollView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor),
             contentStackView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
             contentStackView.topAnchor.constraint(equalTo: scrollView.topAnchor),
             contentStackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -25),
