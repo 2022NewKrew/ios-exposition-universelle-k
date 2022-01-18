@@ -28,10 +28,15 @@ class EntryDetailView: UIStackView {
     }
     
     private func setUpStackView() {
-        self.addArrangedSubview(entryImage)
+        if UIDevice.current.orientation.isLandscape {
+            self.axis = .horizontal
+        }
+        else {
+            self.axis = .vertical
+            self.addArrangedSubview(entryImage)
+        }
         self.addArrangedSubview(entryDescription)
         self.alignment = .center
-        self.axis = .vertical
         self.distribution = .fill
         self.spacing = 10
         self.translatesAutoresizingMaskIntoConstraints = false
