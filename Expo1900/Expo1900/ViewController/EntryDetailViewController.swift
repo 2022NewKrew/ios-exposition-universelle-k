@@ -51,7 +51,6 @@ class EntryDetailViewController: UIViewController {
             scrollView.heightAnchor.constraint(equalTo: totalView.heightAnchor)
         ]
         let portraitConstraints = [
-            entryImage.widthAnchor.constraint(equalToConstant: 0),
             scrollView.heightAnchor.constraint(equalTo: totalView.heightAnchor)
         ]
         
@@ -62,6 +61,7 @@ class EntryDetailViewController: UIViewController {
         }
         else {
             totalView.axis = .vertical
+            entryImage.isHidden = true
             NSLayoutConstraint.deactivate(landscapeConstraints)
             NSLayoutConstraint.activate(portraitConstraints)
         }
