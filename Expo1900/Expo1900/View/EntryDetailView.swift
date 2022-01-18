@@ -28,22 +28,22 @@ class EntryDetailView: UIStackView {
     }
     
     private func setUpStackView() {
-        if UIDevice.current.orientation.isLandscape {
-            self.axis = .horizontal
-        }
-        else {
-            self.axis = .vertical
-            self.addArrangedSubview(entryImage)
-        }
+        self.addArrangedSubview(entryImage)
         self.addArrangedSubview(entryDescription)
+        self.axis = .vertical
         self.alignment = .center
         self.distribution = .fill
         self.spacing = 10
         self.translatesAutoresizingMaskIntoConstraints = false
+        hideImage(UIDevice.current.orientation.isLandscape)
     }
     
     private func setDetailView(data: EntryData) {
         entryImage.image = UIImage(named: data.image)
         entryDescription.text = data.detailDescription
+    }
+    
+    func hideImage(_ state: Bool) {
+        entryImage.isHidden = state
     }
 }
