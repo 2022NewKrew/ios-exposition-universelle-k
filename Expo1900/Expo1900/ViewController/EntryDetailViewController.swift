@@ -46,23 +46,7 @@ class EntryDetailViewController: UIViewController {
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
-        print("trans \(size.width) \(size.height)")
-
-        
-        if size.width > size.height {
-            totalView.axis = .horizontal
-            entryImage.isHidden = false
-            detailView.hideImage(true)
-            NSLayoutConstraint.activate(landscapeConstraints)
-            NSLayoutConstraint.deactivate(portraitConstraints)
-        }
-        else {
-            totalView.axis = .vertical
-            entryImage.isHidden = true
-            detailView.hideImage(false)
-            NSLayoutConstraint.deactivate(landscapeConstraints)
-            NSLayoutConstraint.activate(portraitConstraints)
-        }
+        changeViewLayout(size: size)
     }
     
     override func viewWillLayoutSubviews() {
@@ -79,14 +63,21 @@ class EntryDetailViewController: UIViewController {
         detailView.widthAnchor.constraint(equalTo: scrollView.widthAnchor, constant: -50).isActive = true
         detailView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
         
-        if UIDevice.current.orientation.isLandscape {
+        changeViewLayout(size: view.bounds.size)
+    }
+    
+    private func changeViewLayout(size: CGSize){
+        if size.width > size.height {
             totalView.axis = .horizontal
+            entryImage.isHidden = false
+            detailView.hideImage(true)
             NSLayoutConstraint.activate(landscapeConstraints)
             NSLayoutConstraint.deactivate(portraitConstraints)
         }
         else {
             totalView.axis = .vertical
             entryImage.isHidden = true
+            detailView.hideImage(false)
             NSLayoutConstraint.deactivate(landscapeConstraints)
             NSLayoutConstraint.activate(portraitConstraints)
         }
