@@ -28,6 +28,10 @@ class ExpoViewController: UIViewController {
         }
     }()
     
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return .portrait
+    }
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         configureLabelText()
@@ -35,6 +39,7 @@ class ExpoViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        UIDevice.current.setValue(UIInterfaceOrientation.portrait.rawValue, forKey: "orientation")
         navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
