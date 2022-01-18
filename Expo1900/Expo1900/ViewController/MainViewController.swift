@@ -13,14 +13,20 @@ class MainViewController: UIViewController {
     
     private func setUpUI() {
         view.addSubview(scrollView)
-        scrollView.addSubview(mainView)
         arrangeConstraint(view: scrollView, guide: view.safeAreaLayoutGuide)
         
-        mainView.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
-        mainView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
-//        mainView.widthAnchor.constraint(equalTo: scrollView.frameLayoutGuide.widthAnchor, constant: -20).isActive = true
-        mainView.leadingAnchor.constraint(equalTo: scrollView.frameLayoutGuide.leadingAnchor, constant: 10).isActive = true
-        mainView.trailingAnchor.constraint(equalTo: scrollView.frameLayoutGuide.trailingAnchor, constant: -10).isActive = true
+        let containerView = UIView()
+        containerView.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.addSubview(containerView)
+        
+        arrangeConstraint(view: containerView, guide: scrollView.contentLayoutGuide)
+        containerView.widthAnchor.constraint(equalTo: scrollView.frameLayoutGuide.widthAnchor).isActive = true
+        
+        scrollView.addSubview(mainView)
+        mainView.topAnchor.constraint(equalTo: containerView.topAnchor).isActive = true
+        mainView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor).isActive = true
+        mainView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 10).isActive = true
+        mainView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -10).isActive = true
     }
     
     @objc
