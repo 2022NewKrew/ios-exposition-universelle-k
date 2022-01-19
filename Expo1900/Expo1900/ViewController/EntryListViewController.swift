@@ -16,6 +16,18 @@ class EntryListViewController: UIViewController {
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if UIDevice.current.orientation.rawValue != self.navigationController?.interfaceOrientation.rawValue {
+
+            DispatchQueue.main.async {
+                UINavigationController.attemptRotationToDeviceOrientation()
+            }
+        }
+        print(UIDevice.current.orientation.rawValue)
+        print(self.navigationController?.interfaceOrientation.rawValue)
+    }
+    
     private func setUpTableView() {
         view.addSubview(tableView)
         arrangeConstraint(view: tableView, guide: view.safeAreaLayoutGuide)

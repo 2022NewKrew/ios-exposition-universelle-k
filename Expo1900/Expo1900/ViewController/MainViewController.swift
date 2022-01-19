@@ -13,14 +13,20 @@ class MainViewController: UIViewController {
     
     private func setUpUI() {
         view.addSubview(scrollView)
-        scrollView.addSubview(mainView)
         arrangeConstraint(view: scrollView, guide: view.safeAreaLayoutGuide)
         
-        mainView.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
-        mainView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
-        mainView.widthAnchor.constraint(equalTo: scrollView.widthAnchor, constant: -50).isActive = true
+        let containerView = UIView()
+        containerView.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.addSubview(containerView)
         
-        mainView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 25).isActive = true
+        arrangeConstraint(view: containerView, guide: scrollView.contentLayoutGuide)
+        containerView.widthAnchor.constraint(equalTo: scrollView.frameLayoutGuide.widthAnchor).isActive = true
+        
+        scrollView.addSubview(mainView)
+        mainView.topAnchor.constraint(equalTo: containerView.topAnchor).isActive = true
+        mainView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor).isActive = true
+        mainView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 10).isActive = true
+        mainView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -10).isActive = true
     }
     
     @objc
@@ -29,12 +35,27 @@ class MainViewController: UIViewController {
         self.navigationController?.pushViewController(entryListView, animated: true)
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        navigationController?.setNavigationBarHidden(false, animated: false)
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.setNavigationBarHidden(true, animated: false)
+        AppDelegate.AppUtility.lockOrientation(UIInterfaceOrientationMask.portrait)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        navigationController?.setNavigationBarHidden(false, animated: false)
+        print(UIDevice.current.orientation.rawValue)
+        AppDelegate.AppUtility.lockOrientation(UIInterfaceOrientationMask.all)
+    }
+    
+    override var shouldAutorotate: Bool {
+        return false
+    }
+    
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return .portrait
+    }
+    
+    override open var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
+        return .portrait
     }
 }
 
@@ -45,5 +66,19 @@ extension UIViewController {
         view.bottomAnchor.constraint(equalTo: guide.bottomAnchor).isActive = true
         view.leadingAnchor.constraint(equalTo: guide.leadingAnchor).isActive = true
         view.trailingAnchor.constraint(equalTo: guide.trailingAnchor).isActive = true
+    }
+}
+
+extension UINavigationController {
+    open override var shouldAutorotate: Bool {
+        return (visibleViewController?.shouldAutorotate) ?? false
+    }
+    
+    open override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return (visibleViewController?.supportedInterfaceOrientations) ?? .allButUpsideDown
+    }
+    
+    open override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
+        return (visibleViewController?.preferredInterfaceOrientationForPresentation) ?? .portrait
     }
 }

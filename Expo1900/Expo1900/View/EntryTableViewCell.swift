@@ -13,12 +13,15 @@ class EntryTableViewCell: UITableViewCell {
     
     private let entryName: UILabel = {
         let label: UILabel = UILabel()
+        label.adjustsFontForContentSizeCategory = true
         label.font = UIFont.preferredFont(forTextStyle: .title1)
+        label.numberOfLines = 0
         return label
     }()
     
     private let entryShortDescription: UILabel = {
         let label: UILabel = UILabel()
+        label.adjustsFontForContentSizeCategory = true
         label.numberOfLines = 0
         label.font = UIFont.preferredFont(forTextStyle: .body)
         return label
@@ -62,7 +65,7 @@ class EntryTableViewCell: UITableViewCell {
         contentView.addSubview(entryInfomationStack)
         
         entryImage.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.2).isActive = true
-        entryImage.heightAnchor.constraint(equalTo: entryImage.widthAnchor).isActive = true
+        entryImage.heightAnchor.constraint(lessThanOrEqualTo: entryImage.widthAnchor).isActive = true
         
         entryInfomationStack.topAnchor.constraint(equalTo: contentView.layoutMarginsGuide.topAnchor).isActive = true
         entryInfomationStack.bottomAnchor.constraint(equalTo: contentView.layoutMarginsGuide.bottomAnchor).isActive = true
