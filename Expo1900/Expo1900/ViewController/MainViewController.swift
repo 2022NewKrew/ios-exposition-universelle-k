@@ -37,12 +37,25 @@ class MainViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.setNavigationBarHidden(true, animated: false)
-        AppDelegate.AppUtility.lockOrientation(UIInterfaceOrientationMask.portrait, andRotateTo: UIInterfaceOrientation.portrait)
+        AppDelegate.AppUtility.lockOrientation(UIInterfaceOrientationMask.portrait)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         navigationController?.setNavigationBarHidden(false, animated: false)
-        AppDelegate.AppUtility.lockOrientation(UIInterfaceOrientationMask.all, andRotateTo: UIInterfaceOrientation.unknown)
+        print(UIDevice.current.orientation.rawValue)
+        AppDelegate.AppUtility.lockOrientation(UIInterfaceOrientationMask.all)
+    }
+    
+    override var shouldAutorotate: Bool {
+        return false
+    }
+    
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return .portrait
+    }
+    
+    override open var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
+        return .portrait
     }
 }
 
@@ -53,5 +66,19 @@ extension UIViewController {
         view.bottomAnchor.constraint(equalTo: guide.bottomAnchor).isActive = true
         view.leadingAnchor.constraint(equalTo: guide.leadingAnchor).isActive = true
         view.trailingAnchor.constraint(equalTo: guide.trailingAnchor).isActive = true
+    }
+}
+
+extension UINavigationController {
+    open override var shouldAutorotate: Bool {
+        return (visibleViewController?.shouldAutorotate) ?? false
+    }
+    
+    open override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return (visibleViewController?.supportedInterfaceOrientations) ?? .allButUpsideDown
+    }
+    
+    open override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
+        return (visibleViewController?.preferredInterfaceOrientationForPresentation) ?? .portrait
     }
 }

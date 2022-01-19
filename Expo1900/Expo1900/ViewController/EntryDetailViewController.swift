@@ -1,6 +1,14 @@
 import UIKit
 
 class EntryDetailViewController: UIViewController {
+    private let entryDescription: UILabel = {
+        let label = UILabel()
+        label.adjustsFontForContentSizeCategory = true
+        label.font = UIFont.preferredFont(forTextStyle: .body)
+        label.numberOfLines = 0
+        return label
+    }()
+    
     private let entryImage: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -9,14 +17,24 @@ class EntryDetailViewController: UIViewController {
     }()
     
     private lazy var totalView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [entryImage, scrollView])
+        let stackView = UIStackView(arrangedSubviews: [scrollView])
+        stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.alignment = .center
+        stackView.distribution = .fill
+        stackView.axis = .vertical
+        return stackView
+    }()
+    
+    private lazy var detailView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [entryImage, entryDescription])
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.alignment = .center
+        stackView.axis = .vertical
         stackView.distribution = .fill
         return stackView
     }()
     
     private let scrollView: UIScrollView
-    private let detailView: EntryDetailView
     
     lazy var landscapeConstraints = [
         entryImage.widthAnchor.constraint(equalTo: totalView.widthAnchor, multiplier: 0.3),
@@ -28,10 +46,8 @@ class EntryDetailViewController: UIViewController {
     
     init(data: EntryData) {
         self.scrollView = UIScrollView()
-        self.detailView = EntryDetailView(entry: data)
-        entryImage.image = UIImage(named: data.image)
         super.init(nibName: nil, bundle: nil)
-        navigationItem.title = data.name
+        setDetailView(data: data)
     }
     
     required init?(coder: NSCoder) {
@@ -49,10 +65,6 @@ class EntryDetailViewController: UIViewController {
         changeViewLayout(size: size)
     }
     
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
-    }
-    
     private func setupUI() {
         view.addSubview(totalView)
         scrollView.addSubview(detailView)
@@ -66,18 +78,24 @@ class EntryDetailViewController: UIViewController {
         changeViewLayout(size: view.bounds.size)
     }
     
+    private func setDetailView(data: EntryData) {
+        navigationItem.title = data.name
+        entryImage.image = UIImage(named: data.image)
+        entryDescription.text = data.detailDescription
+    }
+    
     private func changeViewLayout(size: CGSize){
         if size.width > size.height {
             totalView.axis = .horizontal
-            entryImage.isHidden = false
-            detailView.hideImage(true)
+            entryImage.removeFromSuperview()
+            totalView.insertArrangedSubview(entryImage, at: 0)
             NSLayoutConstraint.activate(landscapeConstraints)
             NSLayoutConstraint.deactivate(portraitConstraints)
         }
         else {
             totalView.axis = .vertical
-            entryImage.isHidden = true
-            detailView.hideImage(false)
+            entryImage.removeFromSuperview()
+            detailView.insertArrangedSubview(entryImage, at: 0)
             NSLayoutConstraint.deactivate(landscapeConstraints)
             NSLayoutConstraint.activate(portraitConstraints)
         }
